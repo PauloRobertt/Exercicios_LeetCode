@@ -11,20 +11,22 @@ var lengthOfLongestSubstring = function (s) {
     let array = [];
     let count = 0;
     let result = 0;
-    
-    string.forEach((el,i)=>{
-        if(!array.includes(el)){
-            console.log(`Numero: ${el}`)
+
+    for(let i=0; i < string.length; i++){
+        if(!array.includes(string[i])){
+            array.push(string[i]);
+            count = array.length;
+            console.log(`Numero: ${string[i]}`)
             console.log(`Posição: ${i}`)
             console.log(`Array: ${array}`)
             console.log(`Count: ${count}`)
             console.log("Não inclui")
-            array.push(el);
-            count = array.length;
             console.log("")
         }else{
-            array.splice(0, array.indexOf(el) + 1);
-            console.log(`Numero: ${el}`);
+            array.splice(0, array.indexOf(string[i]) + 1);
+            i--
+            count = 0;
+            console.log(`Numero: ${string[i]}`);
             console.log(`Posição: ${i}`);
             console.log(`Array: ${array}`);
             console.log(`Count: ${count}`);
@@ -35,10 +37,9 @@ var lengthOfLongestSubstring = function (s) {
         if(result < count){
             result = count;
         }
-
-    })
+    }
 
     return result;
 }
 
-console.log(lengthOfLongestSubstring("dvdf"));
+console.log(lengthOfLongestSubstring("abcabcbb"));
